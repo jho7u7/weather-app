@@ -11,4 +11,11 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/weather', [WeatherController::class, 'show']);
 
-Route::post('/comentarios', [ComentarioController::class, 'store']);
+Route::get('/comentarios', [ComentarioController::class, 'index'])
+    ->middleware('auth:sanctum');
+
+Route::post('/comentarios', [ComentarioController::class, 'store'])
+    ->middleware('auth:sanctum');
+
+Route::delete('/comentarios/{comentario}', [ComentarioController::class, 'destroy'])
+    ->middleware('auth:sanctum');

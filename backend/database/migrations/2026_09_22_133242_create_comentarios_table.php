@@ -6,22 +6,16 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
-{
-    Schema::create('comentarios', function (Blueprint $table) {
-        $table->id();
-        $table->foreignId('clima_id')->constrained('climas')->onDelete('cascade');
-        $table->text('comentario');
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('comentarios', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('clima_id')->constrained('climas')->onDelete('cascade');
+            $table->text('comentario');
+            $table->timestamps();
+        });
+    }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('comentarios');
