@@ -65,12 +65,20 @@ export async function createComment(
 }
 
 export async function deleteComment(id: number): Promise<void> {
-  await fetch(`${API_URL}/comentarios/${id}`, {
-    method: 'DELETE',
-    credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'X-XSRF-TOKEN': getXsrfToken(),
-    },
-  })
-}
+    const response = await fetch(`${API_URL}/comentarios/${id}`, {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        Accept: 'application/json',
+        'X-XSRF-TOKEN': getXsrfToken(),
+      },
+    })
+  
+    if (!response.ok) {
+      const data = await response.json().catch(() => null)
+  
+      throw new Error(
+        data?.message || 'No se pudo eliminar el comentario.'
+      )
+    }
+  }

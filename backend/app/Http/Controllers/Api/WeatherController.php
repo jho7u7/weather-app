@@ -25,13 +25,16 @@ class WeatherController extends Controller
         try {
             $weather = $this->weatherService->getWeather($request->city);
 
-            $clima = Clima::create([
+            $clima = Clima::firstOrNew([
                 'ciudad' => $weather['ciudad'],
-                'temperatura' => $weather['temperatura'],
-                'humedad' => $weather['humedad'],
-                'condicion_clima' => $weather['condicion_clima'],
-                'fecha_consulta' => now(),
             ]);
+            
+            $clima->temperatura = $weather['temperatura'];
+            $clima->humedad = $weather['humedad'];
+            $clima->condicion_clima = $weather['condicion_clima'];
+            $clima->fecha_consulta = now();
+            
+            $clima->save();
 
             return response()->json($clima, 200);
         } catch (\Exception $e) {
