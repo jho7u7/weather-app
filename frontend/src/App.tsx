@@ -116,7 +116,7 @@ function App() {
               onClick={() => setCity('Quito')}
             >
               <img
-                src="/public/quito.jpg"
+                src="/quito.jpg"
                 alt="Quito"
                 className="city-image"
               />
@@ -128,7 +128,7 @@ function App() {
               onClick={() => setCity('Guayaquil')}
             >
               <img
-                src="/public/guayaquil.jpg"
+                src="/guayaquil.jpg"
                 alt="Guayaquil"
                 className="city-image"
               />
@@ -140,7 +140,7 @@ function App() {
               onClick={() => setCity('Cuenca')}
             >
               <img
-                src="/public/cuenca.jpg"
+                src="/cuenca.jpg"
                 alt="Cuenca"
                 className="city-image"
               />
@@ -152,7 +152,7 @@ function App() {
               onClick={() => setCity('Loja')}
             >
               <img
-                src="/public/puyo.jpg"
+                src="/puyo.jpg"
                 alt="Puyo"
                 className="city-image"
               />
